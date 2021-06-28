@@ -101,127 +101,17 @@
 
 
 <!-- About Start -->
-<div class="about wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 col-md-6">
-                <div class="about-img">
-                    <img src="img/about.jpg" alt="Image">
-                </div>
-            </div>
-            <div class="col-lg-7 col-md-6">
-                <div class="section-header text-left">
-                    <p>Welcome to Builderz</p>
-                    <h2>{{$set->year}}
-                        @guest
-                        @else
-                        <a class="btn btn-small btn-primary active" href="{{route('setting.edit',$set->id)}}">Edit</a>
-                        @endguest Years Experience
-                    </h2>
-                </div>
-                <div class="about-text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non blandit.
-                    </p>
-                    <a class="btn" href="">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('layouts.about')
 <!-- About End -->
 
 
 <!-- Fact Start -->
-<div class="fact">
-    <div class="container-fluid">
-        <div class="row counters">
-            <div class="col-md-6 fact-left wow slideInLeft">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="fact-icon">
-                            <i class="flaticon-worker"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h2 data-toggle="counter-up">109</h2>
-                            <p>Expert Workers</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="fact-icon">
-                            <i class="flaticon-building"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h2 data-toggle="counter-up">485</h2>
-                            <p>Happy Clients</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 fact-right wow slideInRight">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="fact-icon">
-                            <i class="flaticon-address"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h2 data-toggle="counter-up">789</h2>
-                            <p>Completed Projects</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="fact-icon">
-                            <i class="flaticon-crane"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h2 data-toggle="counter-up">890</h2>
-                            <p>Running Projects</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('layouts.fact')
 <!-- Fact End -->
 
 
 <!-- Service Start -->
-<div class="service">
-    <div class="container">
-        <div class="section-header text-center">
-            <p>Our Services</p>
-            <h2>We Provide Services</h2>
-        </div>
-        <div class="row">
-            @foreach($service as $s)
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{$s->delay}}">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{asset("$s->img")}}" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                {{$s->description}}
-                                @guest
-                                @else
-                                <a class="btn-primary active" href="{{route('service.edit',$s->id)}}">Edit</a>
-                                @endguest
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>{{$s->name}}</h3>
-                        <a class="btn" href="{{asset("$s->img")}}" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
+@include('layouts.service')
 <!-- Service End -->
 
 
@@ -253,90 +143,12 @@
 
 
 <!-- Team Start -->
-<div class="team">
-    <div class="container">
-        <div class="section-header text-center">
-            <p>Our Team</p>
-            <h2>Meet Our Engineer</h2>
-        </div>
-        <div class="row">
-            @foreach($engineer as $e)
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{asset("$e->avatar")}}" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>{{$e->name}}</h2>
-                        <p>{{$e->position}}</p>
-                    </div>
-                    <div class="team-social">
-                        <a class="social-tw" href="">
-                            @guest
-                            @else
-                            <a class="btn-primary active" href="{{route('slidee.edit',$e->id)}}">Edit</a>
-                            @endguest
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
+@include('layouts.team')
 <!-- Team End -->
 
 
 <!-- FAQs Start -->
-<div class="faqs">
-    <div class="container">
-        <div class="section-header text-center">
-            <p>Frequently Asked Question</p>
-            <h2>You May Ask</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div id="accordion-1">
-                    @foreach($ask as $a)
-                    @if($a->id <6) <div class="card wow fadeInLeft" data-wow-delay="0.1s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#{{$a->href}}">
-                                {{$a->question}}
-                            </a>
-                        </div>
-                        <div id="{{$a->href}}" class="collapse" data-parent="#accordion-1">
-                            <div class="card-body">
-                                {{$a->answer}}
-                            </div>
-                        </div>
-                </div>
-                @endif
-                @endforeach
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div id="accordion-2">
-                @foreach($ask as $a)
-                @if($a->id > 5)
-                <div class="card wow fadeInLeft" data-wow-delay="0.1s">
-                    <div class="card-header">
-                        <a class="card-link collapsed" data-toggle="collapse" href="#{{$a->href}}">
-                            {{$a->question}}
-                        </a>
-                    </div>
-                    <div id="{{$a->href}}" class="collapse" data-parent="#accordion-2">
-                        <div class="card-body">
-                            {{$a->answer}}
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @endforeach
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+@include('layouts.ask')
 <!-- FAQs End -->
 <!-- Testimonial Start -->
 <div class="testimonial wow fadeIn" data-wow-delay="0.1s">

@@ -13,9 +13,21 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $user = new User;
-        $user->name = 'Hoàng Văn Dương';
-        $user->email = 'vanduonghoang98@gmail.com';
-        $user->password = '$2y$10$oVJ04r5sapureN09Ql77oOxNNvSicJBKLvSakdk/isOqqB8YNKLl2';
-        $user->save();
+        $user = [
+            [
+                'name' => 'Hoàng Văn Dương',
+                'email' => 'vanduonghoang98@gmail.com',
+                'password' => '$2y$10$oVJ04r5sapureN09Ql77oOxNNvSicJBKLvSakdk/isOqqB8YNKLl2'
+            ],
+            [
+                'name' => 'Hoàng Anh Tú',
+                'email' => 'tuha@gmail.com',
+                'password' => '$2y$10$oVJ04r5sapureN09Ql77oOxNNvSicJBKLvSakdk/isOqqB8YNKLl2'
+            ],
+
+        ];
+        foreach ($user as $u) {
+            User::create($u);
+        }
     }
 }

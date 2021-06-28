@@ -12,4 +12,3 @@ class Ask extends Model
         'href'
     ];
 }
-// 

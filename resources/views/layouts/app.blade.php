@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Buildz') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -110,19 +110,19 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Service</a>
-                            <a href="team.html" class="nav-item nav-link">Team</a>
-                            <a href="portfolio.html" class="nav-item nav-link">Project</a>
+                            <a href="{{route('welcome')}}" class="nav-item nav-link active">Home</a>
+                            <a href="{{route('about')}}" class="nav-item nav-link">About</a>
+                            <a href="{{route('services')}}" class="nav-item nav-link">Service</a>
+                            <a href="{{route('team')}}" class="nav-item nav-link">Team</a>
+                            <a href="{{route('project')}}" class="nav-item nav-link">Project</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu">
-                                    <a href="blog.html" class="dropdown-item">Blog Page</a>
-                                    <a href="single.html" class="dropdown-item">Single Page</a>
+                                    <a href="{{route('blog')}}" class="dropdown-item">Blog Page</a>
+                                    <a href="#" class="dropdown-item">Single Page</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->

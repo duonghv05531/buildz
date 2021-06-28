@@ -21,15 +21,39 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/services', 'WelcomeController@service')->name('services');
+Route::get('/about', 'WelcomeController@about')->name('about');
+Route::get('/team', 'WelcomeController@team')->name('team');
+Route::get('/project', 'WelcomeController@project')->name('project');
+Route::get('/blog', 'WelcomeController@blog')->name('blog');
+Route::get('/contact', 'WelcomeController@contact')->name('contact');
+
+Route::middleware(['auth', 'role:setting'])->group(function () {
+    Route::resource('/setting', 'SettingController');
+});
+Route::middleware(['auth', 'role:service'])->group(function () {
+    Route::resource('/service', 'ServiceController');
+});
+Route::middleware(['auth', 'role:staff'])->group(function () {
+    Route::resource('/staff', 'StaffController');
+});
+Route::middleware(['auth', 'role:slide'])->group(function () {
+    Route::resource('/slide', 'SlideController');
+});
+Route::middleware(['auth', 'role:slidee'])->group(function () {
+    Route::resource('/slidee', 'SlideeController');
+});
+Route::middleware(['auth', 'role:department'])->group(function () {
+    Route::resource('/department', 'DepartmentController');
+});
+Route::middleware(['auth', 'role:position'])->group(function () {
+    Route::resource('/position', 'PositionController');
+});
+Route::middleware(['auth', 'role:salary'])->group(function () {
+    Route::resource('/salary', 'SalaryController');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('/setting', 'SettingController');
-    Route::resource('/service', 'ServiceController');
-    Route::resource('/staff', 'StaffController');
-    Route::resource('/slide', 'SlideController');
-    Route::resource('/slidee', 'SlideeController');
-    Route::resource('/department', 'DepartmentController');
     Route::resource('/position', 'PositionController');
-    Route::resource('/salary', 'SalaryController');
 });
