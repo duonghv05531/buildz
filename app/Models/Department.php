@@ -4,12 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ask extends Model
+class Department extends Model
 {
     public $fillable = [
-        'question',
-        'answer',
-        'href'
+        'name'
     ];
 }
-// 

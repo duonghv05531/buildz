@@ -21,8 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'WelcomeController@index')->name('welcome');
-
 Route::resource('/setting', 'SettingController');
 Route::resource('/service', 'ServiceController');
-Route::resource('/engineer', 'EngineerController');
+Route::resource('/staff', 'StaffController');
 Route::resource('/slide', 'SlideController');
+Route::resource('/slidee', 'SlideeController');

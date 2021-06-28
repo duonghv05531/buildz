@@ -252,9 +252,15 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('engineer.index')}}" class="nav-link">
+                                    <a href="{{route('staff.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Engineer</p>
+                                        <p>Staff</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('slidee.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Slide Engineer</p>
                                     </a>
                                 </li>
                             </ul>

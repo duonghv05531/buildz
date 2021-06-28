@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEngineersTable extends Migration
+class CreateStaffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateEngineersTable extends Migration
      */
     public function up()
     {
-        Schema::create('engineers', function (Blueprint $table) {
+        Schema::create('staff', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('avatar');
-            $table->string('department');
-            $table->string('position');
+            $table->integer('department');
+            $table->integer('position');
             $table->string('age');
             $table->string('address');
             $table->string('phone');
@@ -35,14 +35,6 @@ class CreateEngineersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('engineers');
+        Schema::dropIfExists('staff');
     }
 }
-//         'name',
-//         'avatar',
-//         'position',
-//         'age',
-//         'address',
-//         'phone',
-//         'bank_number',
-//         'email'

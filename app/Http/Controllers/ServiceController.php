@@ -40,7 +40,6 @@ class ServiceController extends Controller
         $service->name = $request->name;
         $service->description = $request->description;
         $service->delay = $request->delay;
-
         $file = $request->file('image');
         $img = 'img/service/' . time() . '.' . $file->getClientOriginalExtension();
         $request->image->move(public_path('img/service'), $img);

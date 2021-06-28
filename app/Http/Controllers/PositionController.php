@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Slide;
 use Illuminate\Http\Request;
 
-class SlideController extends Controller
+class PositionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class SlideController extends Controller
      */
     public function index()
     {
-        $slide = Slide::all();
-        return view('admin/slide.list', ['slide' => $slide]);
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        return view('admin/slide.create');
+        //
     }
 
     /**
@@ -36,17 +34,7 @@ class SlideController extends Controller
      */
     public function store(Request $request)
     {
-        $slide = new Slide;
-        $file = $request->file('img');
-        $img = 'img/slide/' . time() . '.' . $file->getClientOriginalExtension();
-        $request->img->move(public_path('img/slide'), $img);
-        $slide->img = $img;
-        $slide->content = $request->content;
-        $slide->slogan = $request->slogan;
-        $slide->slug = $request->slug;
-
-        $slide->save();
-        return redirect()->route('slide.index');
+        //
     }
 
     /**
@@ -68,9 +56,7 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        $slide = Slide::find($id);
-
-        return view('admin/slide.edit', ['slide' => $slide]);
+        //
     }
 
     /**
@@ -82,12 +68,7 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $slide = Slide::find($id);
-        $slide->content = $request->content;
-        $slide->slogan = $request->slogan;
-        $slide->slug = $request->slug;
-        $slide->save();
-        return redirect()->route('slide.index');
+        //
     }
 
     /**
@@ -98,8 +79,6 @@ class SlideController extends Controller
      */
     public function destroy($id)
     {
-        $slide = Slide::find($id);
-        $slide->delete();
-        return redirect()->route('slide.index');
+        //
     }
 }

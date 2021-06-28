@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ask extends Model
+class Salary extends Model
 {
     public $fillable = [
-        'question',
-        'answer',
-        'href'
+        'position_id',
+        'factor'
     ];
 }
-// 

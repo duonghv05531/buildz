@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Slide;
+use App\Models\SlideEngineer;
 use Illuminate\Http\Request;
 
-class SlideController extends Controller
+class SlideeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class SlideController extends Controller
      */
     public function index()
     {
-        $slide = Slide::all();
-        return view('admin/slide.list', ['slide' => $slide]);
+        $engineer = SlideEngineer::all();
+        return view('admin/slidee.list', ['engineer' => $engineer]);
     }
 
     /**
@@ -25,7 +25,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        return view('admin/slide.create');
+        return view('admin/slidee.create');
     }
 
     /**
@@ -36,17 +36,17 @@ class SlideController extends Controller
      */
     public function store(Request $request)
     {
-        $slide = new Slide;
-        $file = $request->file('img');
-        $img = 'img/slide/' . time() . '.' . $file->getClientOriginalExtension();
-        $request->img->move(public_path('img/slide'), $img);
-        $slide->img = $img;
-        $slide->content = $request->content;
-        $slide->slogan = $request->slogan;
-        $slide->slug = $request->slug;
+        $slidee = new SlideEngineer;
 
-        $slide->save();
-        return redirect()->route('slide.index');
+        $file = $request->avatar;
+        $avatar = 'img/slidee/' . time() . '.' . $file->getClientOriginalExtension();
+        $request->avatar->move(public_path('img/slidee'), $avatar);
+        $slidee->avatar = $avatar;
+        $slidee->name = $request->name;
+        $slidee->position = $request->position;
+
+        $slidee->save();
+        return redirect()->route('slidee.index');
     }
 
     /**
@@ -68,9 +68,8 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        $slide = Slide::find($id);
-
-        return view('admin/slide.edit', ['slide' => $slide]);
+        $slidee = SlideEngineer::find($id);
+        return view('admin/slidee.edit', ['slidee' => $slidee]);
     }
 
     /**
@@ -82,12 +81,11 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $slide = Slide::find($id);
-        $slide->content = $request->content;
-        $slide->slogan = $request->slogan;
-        $slide->slug = $request->slug;
-        $slide->save();
-        return redirect()->route('slide.index');
+        $slidee = SlideEngineer::find($id);
+        $slidee->name = $request->name;
+        $slidee->position = $request->position;
+        $slidee->save();
+        return redirect()->route('slidee.index');
     }
 
     /**
@@ -98,8 +96,8 @@ class SlideController extends Controller
      */
     public function destroy($id)
     {
-        $slide = Slide::find($id);
-        $slide->delete();
-        return redirect()->route('slide.index');
+        $engineer = SlideEngineer::find($id);
+        $engineer->delete();
+        return redirect()->route('slidee.index');
     }
 }

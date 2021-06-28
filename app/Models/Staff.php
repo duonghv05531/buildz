@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Engineer extends Model
+class Staff extends Model
 {
     public $fillable = [
         'name',
