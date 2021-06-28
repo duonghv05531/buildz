@@ -8,5 +8,6 @@ class Position extends Model
 {
     public $fillable = [
         'name',
+        'department_id'
     ];
 }

@@ -12,9 +12,10 @@ class PositionTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 1; $i < 5; $i++) {
             $position = new Position;
             $position->name = 'Position' . $i;
+            $position->department_id = $i;
             $position->save();
         }
     }

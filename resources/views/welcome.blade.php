@@ -274,7 +274,7 @@
                         <a class="social-tw" href="">
                             @guest
                             @else
-                            <a class="btn-primary active" href="{{route('engineer.edit',$e->id)}}">Edit</a>
+                            <a class="btn-primary active" href="{{route('slidee.edit',$e->id)}}">Edit</a>
                             @endguest
                         </a>
                     </div>
@@ -338,8 +338,6 @@
 </div>
 </div>
 <!-- FAQs End -->
-
-
 <!-- Testimonial Start -->
 <div class="testimonial wow fadeIn" data-wow-delay="0.1s">
     <div class="container">

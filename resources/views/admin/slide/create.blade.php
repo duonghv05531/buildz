@@ -24,6 +24,7 @@
                 <input name="slug" type="text" class="form-control" id="" placeholder="Slug">
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{{route('slide.index')}}"><button class="btn btn-outline-danger" type="button">Cancel</button></a>
         </form>
 
     </div>

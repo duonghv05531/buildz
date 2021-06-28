@@ -13,16 +13,23 @@
 
 // use Illuminate\Routing\Route;
 
+// use Illuminate\Routing\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::resource('/setting', 'SettingController');
-Route::resource('/service', 'ServiceController');
-Route::resource('/staff', 'StaffController');
-Route::resource('/slide', 'SlideController');
-Route::resource('/slidee', 'SlideeController');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('/setting', 'SettingController');
+    Route::resource('/service', 'ServiceController');
+    Route::resource('/staff', 'StaffController');
+    Route::resource('/slide', 'SlideController');
+    Route::resource('/slidee', 'SlideeController');
+    Route::resource('/department', 'DepartmentController');
+    Route::resource('/position', 'PositionController');
+    Route::resource('/salary', 'SalaryController');
+});

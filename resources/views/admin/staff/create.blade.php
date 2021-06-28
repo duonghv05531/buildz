@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title','Create a staff')
 @section('content')
 
 <div class="container">
@@ -54,6 +55,7 @@
                 <input name="email" type="text" class="form-control" id="" placeholder="Email">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{route('staff.index')}}"><button class="btn btn-outline-danger" type="button">Cancel</button></a>
         </form>
 
     </div>

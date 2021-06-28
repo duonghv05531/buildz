@@ -22,6 +22,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{route('slide.index')}}"><button class="btn btn-outline-danger" type="button">Cancel</button></a>
         </form>
 
     </div>

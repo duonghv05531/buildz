@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title','Edit a staff')
 @section('content')
 
 <div class="container">
@@ -15,11 +16,29 @@
             </div>
             <div class="form-group">
                 <label for="">Department</label>
-                <input name="department" type="text" class="form-control" id="" placeholder="Department" value="{{$staff->department}}">
+
+                <select name="department" id="input" class="form-control" required="required">
+                    @foreach($department as $d)
+                    @if($d->id == $staff->department_id)
+                    <option selected value="{{$d->id}}">{{$d->name}}</option>
+                    @else
+                    <option value="{{$d->id}}">{{$d->name}}</option>
+                    @endif
+                    @endforeach
+                </select>
+
             </div>
             <div class="form-group">
                 <label for="">Position</label>
-                <input name="position" type="text" class="form-control" id="" placeholder="Position" value="{{$staff->position}}">
+                <select name="position" id="input" class="form-control" required="required">
+                    @foreach($position as $p)
+                    @if($p->id == $staff->position_id)
+                    <option selected value="{{$p->id}}">{{$p->name}}</option>
+                    @else
+                    <option value="{{$p->id}}">{{$p->name}}</option>
+                    @endif
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="">Age</label>
@@ -42,6 +61,7 @@
                 <input name="email" type="text" class="form-control" id="" placeholder="email" value="{{$staff->email}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{route('staff.index')}}"><button class="btn btn-outline-danger" type="button">Cancel</button></a>
         </form>
 
     </div>

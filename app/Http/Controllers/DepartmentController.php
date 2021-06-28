@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\Position;
 use Illuminate\Http\Request;
 
-class DepartmentConttroller extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,9 @@ class DepartmentConttroller extends Controller
      */
     public function index()
     {
-        //
+        $department  = Department::all();
+        $position = Position::all();
+        return view('admin/department.list', ['department' => $department, 'position' => $position]);
     }
 
     /**
@@ -23,7 +27,7 @@ class DepartmentConttroller extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/department.create');
     }
 
     /**
@@ -34,7 +38,10 @@ class DepartmentConttroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $department = new Department;
+        $department->name = $request->name;
+        $department->save();
+        return redirect()->route('department.index');
     }
 
     /**
@@ -56,7 +63,8 @@ class DepartmentConttroller extends Controller
      */
     public function edit($id)
     {
-        //
+        $department = Department::find($id);
+        return view('admin/position.edit', ['department' => $department]);
     }
 
     /**
@@ -68,7 +76,10 @@ class DepartmentConttroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $department = Department::find($id);
+        $department->name = $request->name;
+        $department->save();
+        return redirect()->route('department.index');
     }
 
     /**

@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title','Create a setting')
 @section('content')
 <div class="container">
     <div class="row">
