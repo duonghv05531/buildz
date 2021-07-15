@@ -3,11 +3,16 @@
 <div class="container">
     <div class="row">
 
-        <form action="{{route('slide.update',$slide->id)}}" method="POST" role="form">
+        <form action="{{route('slide.update',$slide->id)}}" method="POST" role="form" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <legend>Edit an slide</legend>
-
+            <div class="form-group">
+                <label for="">Image</label><br>
+                <img class="w-75" src="{{asset("$slide->img")}}" alt=""> <br><br>
+                <input name="img" type="file" class="form-control" id="">
+                <input name="img" type="hidden" value="{{$slide->img}}">
+            </div>
             <div class="form-group">
                 <label for="">Content</label>
                 <input name="content" type="text" class="form-control" id="" placeholder="Content" value="{{$slide->content}}">

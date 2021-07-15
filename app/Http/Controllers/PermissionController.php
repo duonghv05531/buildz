@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
-use App\Models\Position;
+use App\Permission;
 use Illuminate\Http\Request;
 
-class PositionController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $position = Position::join('departments', 'positions.department_id', '=', 'departments.id')
-            ->select('positions.*', 'departments.name as department_name')
-            ->get();
-        return view('admin/position.list', ['position' => $position]);
+        $permission = Permission::all();
+        return view('admin/permission.list', ['permission' => $permission]);
     }
 
     /**
@@ -28,8 +25,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        $department = Department::all();
-        return view('admin/position.create', ['department' => $department]);
+        return view('admin/permission.create');
     }
 
     /**
@@ -40,11 +36,11 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        $position = new Position;
-        $position->name = $request->name;
-        $position->department_id = $request->department;
-        $position->save();
-        return redirect()->route('department.index');
+        $permission = new Permission;
+        $permission->name = $request->name;
+        $permission->display_name = $request->display_name;
+        $permission->save();
+        return redirect()->route('permission.index');
     }
 
     /**
@@ -64,11 +60,9 @@ class PositionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        $department = Department::all();
-        $position = Position::find($id);
-        return view('admin/position.edit', ['department' => $department, 'position' => $position]);
+        return view('admin/permission.edit', ['permission' => $permission]);
     }
 
     /**
@@ -80,11 +74,11 @@ class PositionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $position = Position::find($id);
-        $position->name = $request->name;
-        $position->department_id = $request->department;
-        $position->save();
-        return redirect()->route('department.index');
+        $permission = Permission::find($id);
+        $permission->name = $request->name;
+        $permission->display_name = $request->display_name;
+        $permission->save();
+        return redirect()->route('permission.index');
     }
 
     /**
@@ -95,8 +89,6 @@ class PositionController extends Controller
      */
     public function destroy($id)
     {
-        $position = Position::find($id);
-        $position->delete();
-        return redirect()->route('department.index');
+        //
     }
 }

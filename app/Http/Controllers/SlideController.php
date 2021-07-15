@@ -83,6 +83,14 @@ class SlideController extends Controller
     public function update(Request $request, $id)
     {
         $slide = Slide::find($id);
+        if ($request->file('img')) {
+            $file = $request->file('img');
+            $img = 'img/slide/' . time() . '.' . $file->getClientOriginalExtension();
+            $request->img->move(public_path('img/slide'), $img);
+            $slide->img = $img;
+        } else {
+            $slide->img = $request->img;
+        }
         $slide->content = $request->content;
         $slide->slogan = $request->slogan;
         $slide->slug = $request->slug;

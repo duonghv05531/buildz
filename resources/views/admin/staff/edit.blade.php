@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
 
-        <form action="{{route('staff.update',$staff->id)}}" method="POST" role="form">
+        <form action="{{route('staff.update',$staff->id)}}" method="POST" role="form" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <legend>Edit and Staff</legend>
@@ -13,6 +13,13 @@
             <div class="form-group">
                 <label for="">Name</label>
                 <input name="name" type="text" class="form-control" id="" placeholder="Name" value="{{$staff->name}}">
+            </div>
+            <div class="form-group">
+                <label for="">Avatar</label>
+                <br>
+                <img src="{{asset("$staff->avatar")}}" alt=""> <br><br>
+                <input name="avatar" type="file" class="form-control" id="">
+                <input name="avatar" type="hidden" value="{{$staff->avatar}}">
             </div>
             <div class="form-group">
                 <label for="">Department</label>

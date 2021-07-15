@@ -24,12 +24,12 @@
                     <ul>
                         @foreach($position as $p)
                         @if($p->department_id == $d->id)
-                        <li>
-                            <a href="{{route('position.edit',$p->id)}}">{{$p->name}}</a>
+                        <li style="list-style-type: none;">
+                            <a style="color: black;" href="{{route('position.edit',$p->id)}}">{{$p->name}}</a>
                             <form action="{{asset('')}}position/{{$p->id}}" method="POST">
                                 {{@csrf_field()}}
                                 {{@method_field('delete')}}
-                                <button class="btn btn-outline-danger" type="submit">Dele</button>
+                                <button class="btn btn-outline-danger" type="submit">X</button>
                             </form>
                         </li>
                         @endif
@@ -37,7 +37,7 @@
                     </ul>
                 </td>
                 <td>
-                    <a href="{{route('department.edit',$d->id)}}">Edit</a>
+                    <a class="btn btn-small btn-outline-warning" href="{{route('department.edit',$d->id)}}">Edit</a>
                     <br><br>
                     <form action="{{asset('')}}department/{{$d->id}}" method="POST">
                         {{@csrf_field()}}

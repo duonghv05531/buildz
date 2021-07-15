@@ -52,8 +52,22 @@ Route::middleware(['auth', 'role:position'])->group(function () {
 Route::middleware(['auth', 'role:salary'])->group(function () {
     Route::resource('/salary', 'SalaryController');
 });
+Route::middleware(['auth', 'role:permission'])->group(function () {
+    Route::resource('/permission', 'PermissionController');
+});
+Route::middleware(['auth', 'role:permissionrole'])->group(function () {
+    Route::resource('/permissionrole', 'PermissionRoleController');
+});
+Route::middleware(['auth', 'role:role'])->group(function () {
+    Route::resource('/role', 'SalaryController');
+});
+Route::middleware(['auth', 'role:roleuser'])->group(function () {
+    Route::resource('/roleuser', 'SalaryController');
+});
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::resource('/user', 'UserController');
+});
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:home'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('/position', 'PositionController');
 });

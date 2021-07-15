@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
-use App\Models\Position;
 use Illuminate\Http\Request;
 
-class PositionController extends Controller
+class RoleUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +13,7 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $position = Position::join('departments', 'positions.department_id', '=', 'departments.id')
-            ->select('positions.*', 'departments.name as department_name')
-            ->get();
-        return view('admin/position.list', ['position' => $position]);
+        //
     }
 
     /**
@@ -28,8 +23,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        $department = Department::all();
-        return view('admin/position.create', ['department' => $department]);
+        //
     }
 
     /**
@@ -40,11 +34,7 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        $position = new Position;
-        $position->name = $request->name;
-        $position->department_id = $request->department;
-        $position->save();
-        return redirect()->route('department.index');
+        //
     }
 
     /**
@@ -66,9 +56,7 @@ class PositionController extends Controller
      */
     public function edit($id)
     {
-        $department = Department::all();
-        $position = Position::find($id);
-        return view('admin/position.edit', ['department' => $department, 'position' => $position]);
+        //
     }
 
     /**
@@ -80,11 +68,7 @@ class PositionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $position = Position::find($id);
-        $position->name = $request->name;
-        $position->department_id = $request->department;
-        $position->save();
-        return redirect()->route('department.index');
+        //
     }
 
     /**
@@ -95,8 +79,6 @@ class PositionController extends Controller
      */
     public function destroy($id)
     {
-        $position = Position::find($id);
-        $position->delete();
-        return redirect()->route('department.index');
+        //
     }
 }

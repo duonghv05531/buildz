@@ -24,6 +24,10 @@ class PermissionTableSeeder extends Seeder
             ['name' => 'position', 'display_name' => 'Position'],
             ['name' => 'salary', 'display_name' => 'Salary'],
             ['name' => 'user', 'display_name' => 'User'],
+            ['name' => 'permission', 'display_name' => 'Permission'],
+            ['name' => 'permissionrole', 'display_name' => 'Permissionrole'],
+            ['name' => 'role', 'display_name' => 'Role'],
+            ['name' => 'roleuser', 'display_name' => 'Roleuser'],
         ];
         foreach ($permission as $r) {
             Permission::create($r);

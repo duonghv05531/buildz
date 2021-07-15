@@ -82,10 +82,18 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $service = Service::find($id);
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $img = 'img/service/' . time() . '.' . $file->getClientOriginalExtension();
+            $request->image->move(public_path('img/service'), $img);
+            $service->img = $img;
+        } else {
+            $service->img = $request->img;
+        }
         $service->name = $request->name;
         $service->description = $request->description;
         $service->delay = $request->delay;
-
         $service->save();
 
         return redirect()->route('service.index');

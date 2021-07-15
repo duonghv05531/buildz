@@ -12,6 +12,12 @@
                 <input name="name" type="text" class="form-control" id="" placeholder="Service Name" value="{{$service->name}}">
             </div>
             <div class="form-group">
+                <label for="">Image</label><br>
+                <img class="w-75" src="{{asset("$service->img")}}" alt=""> <br><br>
+                <input name="image" type="file" class="form-control" id="" placeholder="Service Image">
+                <input name="img" type="hidden" value="{{$service->img}}">
+            </div>
+            <div class="form-group">
                 <label for="">Description</label>
                 <input name="description" type="text" class="form-control" id="" placeholder="Service Description" value="{{$service->description}}">
             </div>

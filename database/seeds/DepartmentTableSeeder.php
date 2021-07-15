@@ -12,10 +12,16 @@ class DepartmentTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 4; $i++) {
-            $department = new Department();
-            $department->name = 'department' . $i;
-            $department->save();
+        $department = new Department();
+
+        $department = [
+            ['name' => 'Economic'],
+            ['name' => 'Office'],
+            ['name' => 'Human resouces'],
+            ['name' => 'Deployment'],
+        ];
+        foreach ($department as $d) {
+            Department::create($d);
         }
     }
 }

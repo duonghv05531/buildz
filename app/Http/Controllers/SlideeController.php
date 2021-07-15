@@ -83,6 +83,15 @@ class SlideeController extends Controller
     {
         $slidee = SlideEngineer::find($id);
         $slidee->name = $request->name;
+
+        if ($request->file('avatar')) {
+            $file = $request->avatar;
+            $avatar = 'img/slidee/' . time() . '.' . $file->getClientOriginalExtension();
+            $request->avatar->move(public_path('img/slidee'), $avatar);
+            $slidee->avatar = $avatar;
+        } else {
+            $slidee->avatar = $request->avatar;
+        }
         $slidee->position = $request->position;
         $slidee->save();
         return redirect()->route('slidee.index');

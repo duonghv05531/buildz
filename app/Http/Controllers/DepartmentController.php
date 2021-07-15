@@ -61,10 +61,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Department $department)
     {
-        $department = Department::find($id);
-        return view('admin/position.edit', ['department' => $department]);
+        return view('admin/department.edit', ['department' => $department]);
     }
 
     /**

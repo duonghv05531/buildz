@@ -45,10 +45,12 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $staff = new Staff;
+
         $file = $request->file('avatar');
         $avatar = 'img/staff/' . time() . '.' . $file->getClientOriginalExtension();
         $request->avatar->move(public_path('img/staff'), $avatar);
         $staff->avatar = $avatar;
+
         $staff->name = $request->name;
         $staff->department = $request->department;
         $staff->position = $request->position;
@@ -97,6 +99,16 @@ class StaffController extends Controller
     {
         $staff = Staff::find($id);
         $staff->name = $request->name;
+
+        if ($request->file('avatar')) {
+            $file = $request->file('avatar');
+            $avatar = 'img/staff/' . time() . '.' . $file->getClientOriginalExtension();
+            $request->avatar->move(public_path('img/staff'), $avatar);
+            $staff->avatar = $avatar;
+        } else {
+            $staff->avatar = $request->avatar;
+        }
+
         $staff->department = $request->department;
         $staff->position = $request->position;
         $staff->age = $request->age;
